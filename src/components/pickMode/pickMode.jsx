@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-import { getMode } from "../Api";
+import { getMode } from "../../Api";
 import { useDispatch, useSelector } from "react-redux";
 import MenuItem from "@mui/material/MenuItem";
-import { setField } from "../redux/slices/board-reducer";
+import { setField } from "../../redux/slices/board-reducer";
 import { CustomSelector } from "./CustomeSelector";
 
 const PickMode = ({ setStart }) => {
@@ -12,10 +12,12 @@ const PickMode = ({ setStart }) => {
 
   const dispatch = useDispatch();
 
-  useEffect(async () => {
+  const fetchMode = async () => {
     const res = await getMode();
     setMode(res);
-  }, []);
+  };
+
+  useEffect(fetchMode, []);
 
   const handleChange = (event) => {
     setStart(false);

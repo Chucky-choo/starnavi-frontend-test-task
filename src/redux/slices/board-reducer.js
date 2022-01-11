@@ -4,7 +4,7 @@ export const boardSlice = createSlice({
   name: "board",
   initialState: {
     hoverData: null,
-    field: "",
+    field: ``,
   },
   reducers: {
     setHoverData: (state, action) => {

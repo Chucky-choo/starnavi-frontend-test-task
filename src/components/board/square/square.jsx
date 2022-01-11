@@ -5,12 +5,13 @@ import { changeColorSquare } from "../../../redux/slices/board-reducer";
 const Square = ({ row, index, isHover }) => {
   const dispatch = useDispatch();
 
-  const hendler = () => {
+  const onMouseEnter = () => {
     dispatch(changeColorSquare({ row, index }));
   };
+
   return (
     <div
-      onMouseEnter={hendler}
+      onMouseEnter={onMouseEnter}
       className={isHover ? `${style.square} ${style.blue}` : style.square}
     />
   );

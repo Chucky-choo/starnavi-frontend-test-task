@@ -3,7 +3,7 @@ import Board from "./components/board/board";
 import { useDispatch, useSelector } from "react-redux";
 import { setHoverData } from "./redux/slices/board-reducer";
 import HoverSquareList from "./components/hoverSquareList/hoverSquareList";
-import PickMode from "./pickMode/pickMode";
+import PickMode from "./components/pickMode/pickMode";
 
 function App() {
   const [isStart, setStart] = useState(false);
