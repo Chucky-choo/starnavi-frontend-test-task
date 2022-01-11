@@ -1,0 +1,11 @@
+.square {
+    border: 1px solid black;
+    height: 55px;
+    margin-right: -1px;
+    margin-top: -1px;
+    width: 55px;
+}
+
+.blue {
+    background-color: #03a7f3;
+}

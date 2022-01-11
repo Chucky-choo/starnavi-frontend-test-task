@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import Board from "./components/board/board";
+import { useDispatch, useSelector } from "react-redux";
+import { setHoverData } from "./redux/slices/board-reducer";
+import HoverSquareList from "./components/hoverSquareList/hoverSquareList";
+import PickMode from "./pickMode/pickMode";
 
 function App() {
+  const [isStart, setStart] = useState(false);
+  const { field } = useSelector((store) => store.board);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    let stateBoard = {};
+    for (let i = 1; i <= field; i++) {
+      stateBoard[i] = Array(field).fill(false);
+    }
+    dispatch(setHoverData(stateBoard));
+  }, [field]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="body">
+      <div>
+        <PickMode setStart={setStart} />
+        {isStart ? <Board /> : null}
+      </div>
+      {isStart ? <HoverSquareList /> : null}
     </div>
   );
 }
